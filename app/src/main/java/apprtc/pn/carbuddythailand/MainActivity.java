@@ -22,7 +22,23 @@ public class MainActivity extends AppCompatActivity {
         //Delete All Data
         deleteAllData();
 
+        //Add Data to my SQLite
+        addDataToSQLite();
+
     }   //Main Method
+
+    private void addDataToSQLite() {
+
+        //Get data
+        String[] categoryStrings = MyData.CategorySTRINGS;
+        String[] nameStrings = MyData.nameSTRINGS;
+        String[] phoneStrings = MyData.phonSTRINGS;
+
+        for (int i=0;i<categoryStrings.length;i++){
+            objManageTABLE.addNewValue(categoryStrings[i], nameStrings[i], phoneStrings[i]);
+        } //for
+
+    }   //addDataToSQLite
 
     private void deleteAllData() {
         SQLiteDatabase objSqLiteDatabase = openOrCreateDatabase(MyOpenHelper.DATABASE_NAME, MODE_PRIVATE, null);
