@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     //Explict
@@ -41,6 +42,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         imageViewController();
 
     }   //Main Method
+
+    public void clickSearch(View view) {
+
+        String strSearch = searchEditText.getText().toString().trim();
+
+        if (strSearch.equals("")) {
+            Toast.makeText(MainActivity.this, "กรุณาพิมพ์คำที่ต้องการค้นหา", Toast.LENGTH_SHORT).show();
+        } else {
+
+        }
+
+    }//clickSearch
 
     private void imageViewController() {
 
