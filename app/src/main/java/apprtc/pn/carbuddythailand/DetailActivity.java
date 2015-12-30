@@ -1,10 +1,14 @@
 package apprtc.pn.carbuddythailand;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 public class DetailActivity extends AppCompatActivity {
@@ -37,8 +41,8 @@ public class DetailActivity extends AppCompatActivity {
         Cursor objCursor = objSqLiteDatabase.rawQuery("SELECT * FROM phoneTABLE WHERE Category = " + "'" + selecString + "'" , null);
 
         objCursor.moveToFirst();
-        String[] nameStrings = new String[objCursor.getCount()];
-        String[] phoneStrings = new String[objCursor.getCount()];
+        final String[] nameStrings = new String[objCursor.getCount()];
+        final String[] phoneStrings = new String[objCursor.getCount()];
 
         for (int i = 0; i < objCursor.getCount(); i++) {
             nameStrings[i] = objCursor.getString(objCursor.getColumnIndex(ManaggeTABLE.COLUMN_NAME));
@@ -52,6 +56,46 @@ public class DetailActivity extends AppCompatActivity {
         ListView nameListView = (ListView) findViewById(R.id.listView);
         nameListView.setAdapter(objMyAdapter);
 
+        //Active When Click
+        nameListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                confirmCall(nameStrings[i], phoneStrings[i]);
+
+            }   //event
+        });
+
+
     }   //ListViewConttorller
+
+    private void confirmCall(String nameString, final String phoneString) {
+
+        AlertDialog.Builder objBuilder = new AlertDialog.Builder(this);
+        objBuilder.setIcon(R.drawable.icon_phone);
+        objBuilder.setTitle(nameString);
+        objBuilder.setMessage("คุณต้องการโทรไปที่ " + phoneString + "จริงๆ หรือ?");
+        objBuilder.setCancelable(false);
+        objBuilder.setPositiveButton("โทร", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                myPhone(phoneString);
+                dialogInterface.dismiss();
+
+            }
+        });
+        objBuilder.setNegativeButton("ยกเลิก", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        objBuilder.show();
+
+    }   //confirmCall
+
+    private void myPhone(String phoneString) {
+
+    }
 
 }// Main Class
