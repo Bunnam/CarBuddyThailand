@@ -2,8 +2,10 @@ package apprtc.pn.carbuddythailand;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -96,6 +98,10 @@ public class DetailActivity extends AppCompatActivity {
 
     private void myPhone(String phoneString) {
 
-    }
+        Intent objIntent = new Intent(Intent.ACTION_DIAL);
+        objIntent.setData(Uri.parse("tel:" + phoneString));
+        startActivity(objIntent);
+
+    }   //myPhone
 
 }// Main Class
