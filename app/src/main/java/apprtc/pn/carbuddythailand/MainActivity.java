@@ -1,22 +1,25 @@
 package apprtc.pn.carbuddythailand;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.v7.app.AppCompatActivity;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    //Explict
-    private ManaggeTABLE objManageTABLE;
-    private ImageView imageView0, imageView1, imageView2,
-            imageView3, imageView4, imageView5, imageView6,
-            imageView7, imageView8, imageView9, imageView10;
-    private EditText searchEditText;
 
+    //Explicit
+    private ManaggeTABLE objManageTABLE;
+    private ImageView imageView0, imageView1, imageView2, imageView3,
+            imageView4, imageView5, imageView6, imageView7, imageView8,
+            imageView9, imageView10;
+    private EditText searchEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         objManageTABLE = new ManaggeTABLE(this);
 
         //Test Add Value
-        //objManageTABLE.addNewValue("testCat", "testName","testPhone" );
+        //objManageTABLE.addNewValue("testCat", "testName", "testPhone");
 
         //Delete All Data
         deleteAllData();
@@ -41,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //ImageView Controller
         imageViewController();
 
-    }   //Main Method
+    }   // Main Method
 
     public void clickSearch(View view) {
 
@@ -51,9 +54,53 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Toast.makeText(MainActivity.this, "กรุณาพิมพ์คำที่ต้องการค้นหา", Toast.LENGTH_SHORT).show();
         } else {
 
+            searchName(strSearch);
+
         }
 
-    }//clickSearch
+    }   // clickSearch
+
+    private void searchName(String strSearch) {
+
+        try {
+
+            String[] resultStrings = objManageTABLE.searchName(strSearch);
+
+            confirmCall(strSearch, resultStrings[3]);
+
+        } catch (Exception e) {
+            Toast.makeText(MainActivity.this, "ไม่มี " + strSearch + " ในฐานข้อมูล", Toast.LENGTH_SHORT).show();
+        }
+
+    }   // searchName
+
+    private void confirmCall(String strName, final String resultString) {
+        AlertDialog.Builder objBuilder = new AlertDialog.Builder(this);
+        objBuilder.setIcon(R.drawable.icon_phone);
+        objBuilder.setTitle(strName);
+        objBuilder.setMessage("คุณต้องการโทรไปที่ " + resultString);
+        objBuilder.setPositiveButton("โทร", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                intentToCall(resultString);
+                dialogInterface.dismiss();
+            }
+        });
+        objBuilder.setNegativeButton("ไม่โทร", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        objBuilder.show();
+
+    }
+
+    private void intentToCall(String resultString) {
+        Intent objIntent = new Intent(Intent.ACTION_DIAL);
+        objIntent.setData(Uri.parse("tel:" + resultString));
+        startActivity(objIntent);
+    }
 
     private void imageViewController() {
 
@@ -69,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         imageView9.setOnClickListener(this);
         imageView10.setOnClickListener(this);
 
-    }   //imageViewController
+    }   // imageViewController
 
     private void bindWidget() {
 
@@ -86,8 +133,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         imageView10 = (ImageView) findViewById(R.id.imageView11);
         searchEditText = (EditText) findViewById(R.id.editText);
 
-
-    } //bindWidget
+    }   // bindWidget
 
     private void addDataToSQLite() {
 
@@ -98,9 +144,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         for (int i = 0; i < categoryStrings.length; i++) {
             objManageTABLE.addNewValue(categoryStrings[i], nameStrings[i], phoneStrings[i]);
-        } //for
+        }   //for
 
-    }   //addDataToSQLite
+    }   // addDataToSQLite
 
     private void deleteAllData() {
         SQLiteDatabase objSqLiteDatabase = openOrCreateDatabase(MyOpenHelper.DATABASE_NAME, MODE_PRIVATE, null);
@@ -148,9 +194,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 myIntent(strSelect[10]);
                 break;
 
-        }       //switch
+        }   //switch
 
-    }   //onClick
+    }   // onClick
 
     private void myIntent(String strSelect) {
         Intent objIntent = new Intent(MainActivity.this, DetailActivity.class);
@@ -158,5 +204,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(objIntent);
     }
 
-
-} //Main Call
+}   // Main Class

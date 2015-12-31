@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:gravity="center_vertical|center|center_horizontal">
+
+    <ImageView
+        android:layout_width="226dp"
+        android:layout_height="226dp"
+        android:id="@+id/imageView13"
+        android:src="@drawable/co"
+        android:layout_gravity="center" />
+</LinearLayout>
