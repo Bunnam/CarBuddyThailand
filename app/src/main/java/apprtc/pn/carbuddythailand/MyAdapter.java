@@ -12,7 +12,7 @@ import android.widget.TextView;
  */
 public class MyAdapter extends BaseAdapter{
 
-    //Explicit
+      //Explicit
     private Context objContext;
     private String[] nameStrings, phoneStrings;
 
