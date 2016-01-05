@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/bg">
+    android:layout_height="100dp">
 
     <ImageView
         android:layout_width="wrap_content"
@@ -14,7 +13,7 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="115dp"
+        android:layout_height="85dp"
         android:gravity="center_vertical">
 
         <TextView
@@ -23,7 +22,8 @@
             android:text="New Text"
             android:id="@+id/textView"
             android:textSize="@dimen/h2"
-            android:textStyle="italic" />
+            android:textStyle="italic"
+            android:textColor="#0e0e0e" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -31,6 +31,7 @@
             android:text="New Text"
             android:id="@+id/textView2"
             android:textSize="@dimen/h1"
-            android:textIsSelectable="false" />
+            android:textIsSelectable="false"
+            android:textColor="#0b0a0a" />
     </LinearLayout>
 </LinearLayout>
