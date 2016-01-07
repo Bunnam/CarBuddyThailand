@@ -28,6 +28,8 @@ public class ManaggeTABLE {
 
     }   //Constructor
 
+
+
     public String[] searchName(String StrName) {
 
         try {

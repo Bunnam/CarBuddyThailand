@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ManaggeTABLE objManageTABLE;
     private ImageView imageView0, imageView1, imageView2, imageView3,
             imageView4, imageView5, imageView6, imageView7, imageView8,
-            imageView9, imageView10;
+            imageView9, imageView10,imageView11,imageView12,imageView13,imageView14;
     private EditText searchEditText;
 
     @Override
@@ -115,6 +115,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         imageView8.setOnClickListener(this);
         imageView9.setOnClickListener(this);
         imageView10.setOnClickListener(this);
+        imageView11.setOnClickListener(this);
+        imageView12.setOnClickListener(this);
+        imageView13.setOnClickListener(this);
+        imageView14.setOnClickListener(this);
+
 
     }   // imageViewController
 
@@ -131,6 +136,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         imageView8 = (ImageView) findViewById(R.id.imageView9);
         imageView9 = (ImageView) findViewById(R.id.imageView10);
         imageView10 = (ImageView) findViewById(R.id.imageView11);
+        imageView11 = (ImageView) findViewById(R.id.imageView12);
+        imageView12 = (ImageView) findViewById(R.id.imageView13);
+        imageView13 = (ImageView) findViewById(R.id.imageView14);
+        imageView14 = (ImageView) findViewById(R.id.imageView15);
+
         searchEditText = (EditText) findViewById(R.id.editText);
 
     }   // bindWidget
@@ -192,6 +202,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.imageView11:
                 myIntent(strSelect[10]);
+                break;
+            case R.id.imageView12:
+                myIntent(strSelect[11]);
+                break;
+            case R.id.imageView13:
+                myIntent(strSelect[12]);
+                break;
+            case R.id.imageView14:
+                myIntent(strSelect[13]);
+                break;
+            case R.id.imageView15:
+                myIntent(strSelect[14]);
                 break;
 
         }   //switch
