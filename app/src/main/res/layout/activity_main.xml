@@ -25,14 +25,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height"
                 android:id="@+id/imageView"
-                android:src="@drawable/a1"
+                android:src="@drawable/a51"
                 android:adjustViewBounds="false" />
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height"
                 android:id="@+id/imageView2"
-                android:src="@drawable/a2" />
+                android:src="@drawable/a52" />
 
             <ImageView
                 android:layout_width="match_parent"
