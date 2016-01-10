@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ManaggeTABLE objManageTABLE;
     private ImageView imageView0, imageView1, imageView2, imageView3,
             imageView4, imageView5, imageView6, imageView7, imageView8,
-            imageView9, imageView10,imageView11,imageView12,imageView13,imageView14;
+            imageView9, imageView10,imageView11,imageView12,imageView13,imageView14,imageView15;
     private EditText searchEditText;
 
     @Override
@@ -119,6 +119,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         imageView12.setOnClickListener(this);
         imageView13.setOnClickListener(this);
         imageView14.setOnClickListener(this);
+        imageView15.setOnClickListener(this);
 
 
     }   // imageViewController
@@ -140,6 +141,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         imageView12 = (ImageView) findViewById(R.id.imageView13);
         imageView13 = (ImageView) findViewById(R.id.imageView14);
         imageView14 = (ImageView) findViewById(R.id.imageView15);
+        imageView15 = (ImageView) findViewById(R.id.imageView16);
 
         searchEditText = (EditText) findViewById(R.id.editText);
 
@@ -214,6 +216,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.imageView15:
                 myIntent(strSelect[14]);
+                break;
+            case R.id.imageView16:
+                myIntent(strSelect[15]);
                 break;
 
         }   //switch
